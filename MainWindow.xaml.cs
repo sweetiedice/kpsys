@@ -156,11 +156,11 @@ namespace kpsys
                             while (reader.Read())
                             {
                                 
-                                int xValue = reader.GetInt32(0);
-                                int y1Value = reader.GetInt32(1); 
-                                int y2Value = reader.GetInt32(2);
-                                int y3Value = reader.GetInt32(3);
-                                int y4Value = reader.GetInt32(4);
+                                int xValue = reader.GetInt32(1);
+                                int y1Value = reader.GetInt32(2); 
+                                int y2Value = reader.GetInt32(3);
+                                int y3Value = reader.GetInt32(4);
+                                int y4Value = reader.GetInt32(5);
 
                                 scatterSeries.Points.Add(new ScatterPoint(xValue, y1Value));
                                 scatterSeries.Points.Add(new ScatterPoint(y1Value, y2Value));
@@ -220,11 +220,11 @@ namespace kpsys
                         while (reader.Read())
                         {
                             // Получаем значения X и Y из столбцов
-                            int xValue = reader.GetInt32(0);
-                            int y1Value = reader.GetInt32(1);
-                            int y2Value = reader.GetInt32(2);
-                            int y3Value = reader.GetInt32(3);
-                            int y4Value = reader.GetInt32(4);                 
+                            int xValue = reader.GetInt32(1);
+                            int y1Value = reader.GetInt32(2);
+                            int y2Value = reader.GetInt32(3);
+                            int y3Value = reader.GetInt32(4);
+                            int y4Value = reader.GetInt32(5);                 
 
                             sumSqdiffXavg_X += Math.Pow(avgX - xValue,2)   ;
                             sumSqdiffY1avg_Y1 += Math.Pow(avgY1 - y1Value,2);
@@ -328,11 +328,11 @@ namespace kpsys
                         while (reader.Read())
                         {
                             // Получаем значения X и Y из столбцов
-                            int xValue = reader.GetInt32(0);
-                            int y1Value = reader.GetInt32(1);
-                            int y2Value = reader.GetInt32(2);
-                            int y3Value = reader.GetInt32(3);
-                            int y4Value = reader.GetInt32(4);
+                            int xValue = reader.GetInt32(1);
+                            int y1Value = reader.GetInt32(2);
+                            int y2Value = reader.GetInt32(3);
+                            int y3Value = reader.GetInt32(4);
+                            int y4Value = reader.GetInt32(5);
 
                             sumPX_Y1 += xValue * BetaX_Y1 + AlphaX_Y1;
                             sumPX_Y2 += xValue * BetaX_Y2 + AlphaX_Y2;
@@ -477,7 +477,7 @@ namespace kpsys
 
         private void ButtonControlData_Click(object sender, RoutedEventArgs e)
         {
-            Window addDataWindow = new addDataWindow();
+            Window addDataWindow = new AddDataWindow();
             addDataWindow.Show();
         }
     }

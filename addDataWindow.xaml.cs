@@ -19,9 +19,9 @@ namespace kpsys
     /// <summary>
     /// Логика взаимодействия для addDataWindow.xaml
     /// </summary>
-    public partial class addDataWindow : Window
+    public partial class AddDataWindow : Window
     {
-        public addDataWindow()
+        public AddDataWindow()
         {
             InitializeComponent();
             LoadData();
@@ -46,7 +46,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error loading data: " + ex.Message);
+                    MessageBox.Show("Ошибка при отображении данных: " + ex.Message);
                 }
             }
         }
@@ -63,12 +63,12 @@ namespace kpsys
                 {
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show("Record deleted successfully!");
-                    LoadData(); // Reload data after deleting a record
+                    MessageBox.Show("Выбранная запись удалена");
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting record: " + ex.Message);
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
                 }
             }
         }
@@ -91,12 +91,11 @@ namespace kpsys
                 {
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show("Record added successfully!");
-                    LoadData(); // Reload data after adding a record
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error adding record: " + ex.Message);
+                    MessageBox.Show("Ошибка при добавлении записи: " + ex.Message);
                 }
             }
         }
@@ -110,9 +109,9 @@ namespace kpsys
                 DeleteRecord(id);
             }
         }
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Переключаем активацию кнопки удаления в зависимости от выбранной строки
+            // Переключаем активацию кнопки удаления в зависимости от того выбрана ли строка в Datagrid
             if (dataGrid.SelectedItem == null)
             {
                 deleteButton.IsEnabled = false;
@@ -121,6 +120,12 @@ namespace kpsys
             {
                 deleteButton.IsEnabled = true;
             }
+        }
+
+        private void ButtonGetResults_Click(object sender, RoutedEventArgs e)
+        {
+            Window MainWindow = new MainWindow();
+            MainWindow.Show();
         }
     }
 }
