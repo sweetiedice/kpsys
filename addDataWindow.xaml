@@ -1,13 +1,15 @@
 ﻿<Window x:Class="kpsys.AddDataWindow"
         FontSize="20"
+        FontWeight="Bold"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kpsys"
         mc:Ignorable="d"
-Title="Главное окно" Height="900" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Grid Margin="10">
+        Icon="Resourses/Icons/icon.ico"
+        Title="Добавление данных" Height="900" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -25,34 +27,34 @@ Title="Главное окно" Height="900" Width="800" WindowStartupLocation="
        
 
         <Label Grid.Row="0" Content="X:"/>
-        <TextBox Grid.Row="0" Name="textBoxX" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="0" Name="textBoxX" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="1" Content="Y1:"/>
-        <TextBox Grid.Row="1" Name="textBoxY1" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="1" Name="textBoxY1" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="2" Content="Y2:"/>
-        <TextBox Grid.Row="2" Name="textBoxY2" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="2" Name="textBoxY2" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="3" Content="Y3:"/>
-        <TextBox Grid.Row="3" Name="textBoxY3" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="3" Name="textBoxY3" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="4" Content="Y4:"/>
-        <TextBox Grid.Row="4" Name="textBoxY4" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="4" Name="textBoxY4" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="5" Content="City:"/>
-        <TextBox Grid.Row="5" Name="textBoxCity" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="5" Name="textBoxCity" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
 
         <Label Grid.Row="6" Content="Month:"/>
-        <TextBox Grid.Row="6" Name="textBoxMonth" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="6" Name="textBoxMonth" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="100,5,5,5"/>
         <DockPanel Grid.Row="7">
 
-            <Button DockPanel.Dock="Left" Content="Добавить" Click="AddRecord_Click" Width="100" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-            <Button DockPanel.Dock="Left" x:Name="deleteButton" Width="100"  Content="Удалить" Click="DeleteButton_Click" HorizontalAlignment="Center" Margin="0,5,0,0" IsEnabled="False"/>
-            <Button DockPanel.Dock="Right" Grid.Row="8" Width="200" HorizontalAlignment="Right"  Margin="0,5,0,0" Content="Получить результаты" Click="ButtonGetResults_Click"/>
+            <Button Padding="5" Style="{DynamicResource ButtonStyle}" DockPanel.Dock="Left" Content="Добавить" Click="AddRecord_Click" Width="125" HorizontalAlignment="Center" Margin="2,0"/>
+            <Button Padding="5" Style="{DynamicResource ButtonStyle}" DockPanel.Dock="Left" x:Name="deleteButton" Width="125"  Content="Удалить" Click="DeleteButton_Click" HorizontalAlignment="left" Margin="2,0" IsEnabled="False"/>
+       
         </DockPanel>
 
 
-        <DataGrid Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="9" Name="dataGrid" Grid.ColumnSpan="2" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionMode="Single" CanUserSortColumns="True" CanUserAddRows="False" SelectionChanged="DataGrid_SelectionChanged" Cursor="Cross"/>
+        <DataGrid Margin="5" AlternatingRowBackground="#e0dbff" RowBackground="#ebe8ff" BorderBrush="#a294ff" BorderThickness="3" Background="#cac2ff" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="9" Name="dataGrid" Grid.ColumnSpan="2" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionMode="Single" CanUserSortColumns="True" CanUserAddRows="False" SelectionChanged="DataGrid_SelectionChanged" Cursor="Cross"/>
 
     </Grid>
 </Window>

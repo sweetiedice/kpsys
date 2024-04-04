@@ -102,16 +102,22 @@ namespace kpsys
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (dataGrid.SelectedItem != null)
-            {
-                DataRowView row = (DataRowView)dataGrid.SelectedItem;
-                int id = (int)row["ID"]; 
-                DeleteRecord(id);
+            { try
+                {
+                    DataRowView row = (DataRowView)dataGrid.SelectedItem;
+                    int id = (int)row["ID"];
+                    DeleteRecord(id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                }
             }
         }
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Переключаем активацию кнопки удаления в зависимости от того выбрана ли строка в Datagrid
             if (dataGrid.SelectedItem == null)
             {
                 deleteButton.IsEnabled = false;
@@ -120,12 +126,6 @@ namespace kpsys
             {
                 deleteButton.IsEnabled = true;
             }
-        }
-
-        private void ButtonGetResults_Click(object sender, RoutedEventArgs e)
-        {
-            Window MainWindow = new MainWindow();
-            MainWindow.Show();
         }
     }
 }
