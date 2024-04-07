@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:kpsys"
         mc:Ignorable="d"
         Icon="Resourses/Icons/icon.ico"
-        Title="Добавление данных" Height="900" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Добавление данных" Height="700" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
