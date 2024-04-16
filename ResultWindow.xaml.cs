@@ -1,21 +1,9 @@
 ﻿using OxyPlot.Series;
-using OxyPlot.Wpf;
 using OxyPlot;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
-
 
 namespace kpsys
 {
@@ -144,7 +132,7 @@ namespace kpsys
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
 
-                    // Выполняем команду и получаем читатель данных
+                    // Выполняем команду и получаем считыватель данных
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
 
@@ -322,7 +310,7 @@ namespace kpsys
                     double BetaY3_Y4 = Math.Round((count * sumMultY3_Y4 - sumY3 * sumY4) / (count * sumSqY3 - (Math.Pow(sumY3, 2))), 2);
                     double AlphaY3_Y4 = Math.Round((sumY4 - (BetaY3_Y4 * sumY3)) / count, 2);
 
-                    // Выполняем команду и получаем читатель данных
+                    // Выполняем команду и получаем считыватель данных
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -352,7 +340,6 @@ namespace kpsys
                         }
                         reader.Close();
                     }
-
 
                     double PavgX_Y1 = sumPX_Y1 / count;
                     double PavgX_Y2 = sumPX_Y2 / count;
@@ -438,47 +425,32 @@ namespace kpsys
                     x530x627.Text = $"{R_Y2_Y4}";
                     x572x627.Text = $"{R_Y3_Y4}";
 
-
                     s369_xavg.Text = $"{avgX}";
                     s369_D.Text = $"{D_X}";
                     s369_V.Text = $"{V_X}";
                     s369_G.Text = $"{G_X}";
-                    //  s369_P.Text = $"{PavgX_Y1}";
 
                     s463_xavg.Text = $"{avgY1}";
                     s463_D.Text = $"{D_Y1}";
                     s463_V.Text = $"{V_Y1}";
                     s463_G.Text = $"{G_Y1}";
-                    // s463_P.Text = $"{PavgX_Y2}";
 
                     s530_xavg.Text = $"{avgY2}";
                     s530_D.Text = $"{D_Y2}";
                     s530_V.Text = $"{V_Y2}";
                     s530_G.Text = $"{G_Y2}";
-                    //  s530_P.Text = $"{PavgX_Y3}";
 
                     s572_xavg.Text = $"{avgY3}";
                     s572_D.Text = $"{D_Y3}";
                     s572_V.Text = $"{V_Y3}";
                     s572_G.Text = $"{G_Y3}";
-                    // s572_P.Text = $"{PavgX_Y4}";
 
                     s627_xavg.Text = $"{avgY4}";
                     s627_D.Text = $"{D_Y4}";
                     s627_V.Text = $"{V_Y4}";
                     s627_G.Text = $"{G_Y4}";
-                    // s627_P.Text = $"{PavgX_Y1}";
-
-
-
                 }
             }
-        }
-
-        private void ButtonControlData_Click(object sender, RoutedEventArgs e)
-        {
-            Window addDataWindow = new AddDataWindow();
-            addDataWindow.Show();
         }
     }
 }

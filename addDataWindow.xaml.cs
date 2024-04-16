@@ -46,7 +46,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при отображении данных: " + ex.Message);
+                    MessageBox.Show("Ошибка при отображении данных: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -63,12 +63,12 @@ namespace kpsys
                 {
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show("Выбранная запись удалена");
+                    MessageBox.Show("Выбранная запись удалена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при добавлении записи: " + ex.Message);
+                    MessageBox.Show("Ошибка при добавлении записи: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

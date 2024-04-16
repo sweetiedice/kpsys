@@ -48,7 +48,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при отображении данных: " + ex.Message);
+                    MessageBox.Show("Ошибка при отображении данных: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -60,8 +60,6 @@ namespace kpsys
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ID", id);
-
-
             }
         }
 
@@ -78,9 +76,10 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message,"Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+
         }
 
         private void ButtonGetResults_Click(object sender, RoutedEventArgs e)
