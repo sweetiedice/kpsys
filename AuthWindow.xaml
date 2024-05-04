@@ -26,7 +26,7 @@
             CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect
-                    BlurRadius="50"
+                    BlurRadius="30"
                     ShadowDepth="0"
                     Color="#FF430E71" />
             </Border.Effect>
@@ -173,7 +173,7 @@
                     Foreground="#000"
                     FontWeight="Bold"
                     Click="AuthenticateUserButton"
-                    Content="Авторизоваться"
+                    Content="Войти"
                     FontFamily="Verdana"
                     FontSize="22"
                     Style="{DynamicResource ButtonStyle}">

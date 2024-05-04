@@ -4,6 +4,17 @@ using System;
 using System.Linq;
 using System.Windows;
 using Microsoft.Data.SqlClient;
+using System.IO;
+using Microsoft.Win32;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.Windows.Controls;
+using OxyPlot.Wpf;
+using System.Collections.Generic;
+using System.Data;
+using System.Xml;
 
 namespace kpsys
 {
@@ -36,7 +47,6 @@ namespace kpsys
         double sumMultY1_Y2 = 0;
         double sumMultY1_Y3 = 0;
         double sumMultY1_Y4 = 0;
-
 
         double sumMultY2_Y3 = 0;
         double sumMultY2_Y4 = 0;
@@ -80,7 +90,6 @@ namespace kpsys
 
         int count = 0;
 
-
         double sumPX_Y1 = 0;
         double sumPX_Y2 = 0;
         double sumPX_Y3 = 0;
@@ -94,6 +103,94 @@ namespace kpsys
         double sumPY2_Y4 = 0;
 
         double sumPY3_Y4 = 0;
+
+        private void ExportToPdf_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем диалоговое окно сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf"
+            };
+
+            // Открываем диалоговое окно и проверяем, был ли выбран файл для сохранения
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                // Получаем путь к выбранному файлу
+                string filePath = saveFileDialog.FileName;
+
+                // Создаем документ PDF
+                Document document = new Document();
+
+                try
+                {
+                    // Создаем объект PdfWriter для записи в PDF-файл
+                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+
+                    // Открываем документ для записи
+                    document.Open();
+
+                    // Список имен элементов, которые нужно добавлять в PDF
+                    List<string> includedElementNames = new List<string> { "Grid1", "Grid2", "Grid3", "Grid4", "Grid5", "plotView", "functionPlotView" };
+                    
+                    foreach (var element in FindVisualChildren<FrameworkElement>(this))
+                    {
+                        // Проверяем, входит ли имя элемента в список включенных элементов
+                        if (includedElementNames.Contains(element.Name))
+                        {
+                            // Создаем новую страницу перед каждым элементом
+                            document.NewPage();
+
+                            // Создаем рисунок элемента
+                            using (MemoryStream stream = new MemoryStream())
+                            {
+                                RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap((int)element.ActualWidth, (int)element.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+                                renderTargetBitmap.Render(element);
+                                var encoder = new PngBitmapEncoder();
+                                encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+                                encoder.Save(stream);
+                                byte[] imageBytes = stream.ToArray();
+                                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(imageBytes);
+
+                                // Добавляем изображение на страницу PDF
+                                document.Add(img);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при экспорте в PDF: " + ex.Message);
+                }
+                finally
+                {
+                    // Закрываем документ
+                    document.Close();
+                }
+
+                MessageBox.Show("Экспорт в PDF успешно выполнен!");
+            }
+        }
+
+        // Метод для поиска всех дочерних элементов указанного типа в указанном элементе
+        private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
 
         private void CalculationData()
         {
@@ -341,19 +438,19 @@ namespace kpsys
                         reader.Close();
                     }
 
-                    double PavgX_Y1 = sumPX_Y1 / count;
-                    double PavgX_Y2 = sumPX_Y2 / count;
-                    double PavgX_Y3 = sumPX_Y3 / count;
-                    double PavgX_Y4 = sumPX_Y4 / count;
+                    double PavgX_Y1 = Math.Round(sumPX_Y1 / count, 3);
+                    double PavgX_Y2 = Math.Round(sumPX_Y2 / count, 3);
+                    double PavgX_Y3 = Math.Round(sumPX_Y3 / count, 3);
+                    double PavgX_Y4 = Math.Round(sumPX_Y4 / count, 3);
 
-                    double PavgY1_Y2 = sumPY1_Y2 / count;
-                    double PavgY1_Y3 = sumPY1_Y3 / count;
-                    double PavgY1_Y4 = sumPY1_Y4 / count;
+                    double PavgY1_Y2 = Math.Round(sumPY1_Y2 / count, 3);
+                    double PavgY1_Y3 = Math.Round(sumPY1_Y3 / count, 3);
+                    double PavgY1_Y4 = Math.Round(sumPY1_Y4 / count, 3);
 
-                    double PavgY2_Y3 = sumPY2_Y3 / count;
-                    double PavgY2_Y4 = sumPY2_Y4 / count;
+                    double PavgY2_Y3 = Math.Round(sumPY2_Y3 / count, 3);
+                    double PavgY2_Y4 = Math.Round(sumPY2_Y4 / count, 3);
 
-                    double PavgY3_Y4 = sumPY3_Y4 / count;
+                    double PavgY3_Y4 = Math.Round(sumPY3_Y4 / count, 3);
 
                     double minX = scatterSeries.Points.Min(p => p.X);
                     double maxX = scatterSeries.Points.Max(p => p.X);
@@ -384,7 +481,6 @@ namespace kpsys
                     Ax530x627.Text = $"{AlphaY2_Y4}";
 
                     Ax572x627.Text = $"{AlphaY3_Y4}";
-
 
                     Bx369x463.Text = $"{BetaX_Y1}";
                     Bx369x530.Text = $"{BetaX_Y2}";

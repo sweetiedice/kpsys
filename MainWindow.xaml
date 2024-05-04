@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <ToolBar Grid.Row="0">
-            <Button Style="{DynamicResource ButtonStyle}" x:Name="addButton" Width="40" Height="40" Click="addButton_Click" HorizontalAlignment="Center">
+            <Button Style="{DynamicResource ButtonStyle}" x:Name="addButton" Width="40" Height="40" Click="AddButton_Click" HorizontalAlignment="Center">
                 <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Source="Resourses/Icons/add.png"/>
                 <Button.ToolTip>
                     <ToolTip>
@@ -27,7 +27,7 @@
                 </Button.ToolTip>
             </Button>
             <Separator/>
-            <Button Style="{DynamicResource ButtonStyle}" x:Name="refreshButton" Width="40" Height="40" Click="refreshButton_Click" HorizontalAlignment="Center">
+            <Button Style="{DynamicResource ButtonStyle}" x:Name="refreshButton" Width="40" Height="40" Click="RefreshButton_Click" HorizontalAlignment="Center">
                 <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Source="Resourses/Icons/refresh.png"/>
                 <Button.ToolTip>
                     <ToolTip>
@@ -37,7 +37,7 @@
             </Button>
         </ToolBar>
 
-        <DataGrid Margin="5" AlternatingRowBackground="#e0dbff" RowBackground="#ebe8ff" BorderBrush="#a294ff" BorderThickness="3" Background="#cac2ff" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Name="dataGrid" Grid.ColumnSpan="2" CanUserReorderColumns="False" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionUnit="FullRow" CanUserSortColumns="True" CanUserAddRows="False" Cursor="Cross"/>
+        <DataGrid ColumnWidth="*" Margin="5" AlternatingRowBackground="#e0dbff" RowBackground="#ebe8ff" BorderBrush="#a294ff" BorderThickness="3" Background="#cac2ff" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Name="dataGrid" Grid.ColumnSpan="2" CanUserReorderColumns="False" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionUnit="FullRow" CanUserSortColumns="True" CanUserAddRows="False" Cursor="Cross"/>
         <Button Style="{DynamicResource ButtonStyle}" Grid.Row="2" Width="230" Padding="5" HorizontalAlignment="Right"  Margin="2" Content="Получить результаты" Click="ButtonGetResults_Click"/>
     </Grid>
 </Window>

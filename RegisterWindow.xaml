@@ -29,7 +29,7 @@
             <!--  эффект от плашки  -->
             <Border.Effect>
                 <DropShadowEffect
-                    BlurRadius="50"
+                    BlurRadius="30"
                     ShadowDepth="0"
                     Color="#FF430E71" />
             </Border.Effect>

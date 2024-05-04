@@ -33,7 +33,11 @@ namespace kpsys
         private void LoadData()
         {
             dataTable = new DataTable();
-            string query = "SELECT * FROM [Values]";
+            string query = "SELECT [Values].X AS [369 нм], [Values].Y1 AS [463 нм], [Values].Y2 AS [530 нм], [Values].Y3 AS [572 нм], [Values].Y4 AS [627 нм], Cities.CityName COLLATE Cyrillic_General_CI_AS AS [Город], Months.Month COLLATE Cyrillic_General_CI_AS AS [Месяц] " +
+                "FROM [Values] " +
+                "LEFT JOIN Cities ON [Values].City = Cities.Id " +
+                "LEFT JOIN Months ON [Values].Month = Months.Id; ";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -52,35 +56,7 @@ namespace kpsys
                 }
             }
         }
-        private void DeleteRecord(int id)
-        {
-            string query = "DELETE FROM [Values] WHERE ID = @ID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", id);
-            }
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (dataGrid.SelectedItem != null)
-            {
-                try
-                {
-                    DataRowView row = (DataRowView)dataGrid.SelectedItem;
-                    int id = (int)row["ID"];
-                    DeleteRecord(id);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message,"Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
-        }
+      
 
         private void ButtonGetResults_Click(object sender, RoutedEventArgs e)
         {
@@ -88,13 +64,13 @@ namespace kpsys
             ResultWindow.Show();
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Window AddDataWindow = new AddDataWindow();
             AddDataWindow.Show();
         }
 
-        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             LoadData();
         }
