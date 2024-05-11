@@ -1,5 +1,5 @@
 ﻿<Window x:Class="kpsys.MainWindow"
-        FontSize="20"
+        FontSize="18"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,9 +8,12 @@
         mc:Ignorable="d"
         
         Icon="Resourses/Icons/icon.ico"
-        Title="Главное окно" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="600" Width="600">
+        Title="Главное окно" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="800" Width="1200">
     <Grid Margin="5,0,5,10">
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -18,15 +21,6 @@
         </Grid.RowDefinitions>
 
         <ToolBar Grid.Row="0">
-            <Button Style="{DynamicResource ButtonStyle}" x:Name="addButton" Width="40" Height="40" Click="AddButton_Click" HorizontalAlignment="Center">
-                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Source="Resourses/Icons/add.png"/>
-                <Button.ToolTip>
-                    <ToolTip>
-                        Добавление и редактирование данных
-                    </ToolTip>
-                </Button.ToolTip>
-            </Button>
-            <Separator/>
             <Button Style="{DynamicResource ButtonStyle}" x:Name="refreshButton" Width="40" Height="40" Click="RefreshButton_Click" HorizontalAlignment="Center">
                 <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30" Source="Resourses/Icons/refresh.png"/>
                 <Button.ToolTip>
@@ -36,8 +30,58 @@
                 </Button.ToolTip>
             </Button>
         </ToolBar>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
 
-        <DataGrid ColumnWidth="*" Margin="5" AlternatingRowBackground="#e0dbff" RowBackground="#ebe8ff" BorderBrush="#a294ff" BorderThickness="3" Background="#cac2ff" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Name="dataGrid" Grid.ColumnSpan="2" CanUserReorderColumns="False" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionUnit="FullRow" CanUserSortColumns="True" CanUserAddRows="False" Cursor="Cross"/>
-        <Button Style="{DynamicResource ButtonStyle}" Grid.Row="2" Width="230" Padding="5" HorizontalAlignment="Right"  Margin="2" Content="Получить результаты" Click="ButtonGetResults_Click"/>
+            </Grid.RowDefinitions>
+
+
+
+            <Label Grid.Row="0" Content="Значение 0,369:"/>
+            <TextBox Grid.Row="0" Name="textBoxX" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="1" Content="Значение 0,463:"/>
+            <TextBox Grid.Row="1" Name="textBoxY1" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="2" Content="Значение 0,530:"/>
+            <TextBox Grid.Row="2" Name="textBoxY2" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="3" Content="Значение 0,572:"/>
+            <TextBox Grid.Row="3" Name="textBoxY3" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="4" Content="Значение 0,627:"/>
+            <TextBox Grid.Row="4" Name="textBoxY4" Background="Transparent" BorderThickness="0,0,0,3" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="5" Margin="40,0,0,0" Content="Город:"/>
+            <ComboBox Grid.Row="5" Name="comboBoxCity" Background="Transparent" BorderThickness="0,0,0,0" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <Label Grid.Row="6" Margin="38,0,0,0" Content="Месяц:"/>
+            <ComboBox Grid.Row="6" Name="comboBoxMonth" Background="Transparent" BorderThickness="0,0,0,0" BorderBrush="#cac2ff" Margin="170,5,5,5"/>
+
+            <DockPanel HorizontalAlignment="Center" Grid.Row="7">
+
+                <Button Padding="5" Style="{DynamicResource ButtonStyle}" DockPanel.Dock="Left" Content="Добавить" Click="AddRecord_Click" Width="125" HorizontalAlignment="Center" Margin="2,0"/>
+                <Button Padding="5" Style="{DynamicResource ButtonStyle}" DockPanel.Dock="Left" x:Name="deleteButton" Width="125"  Content="Удалить" Click="DeleteButton_Click" HorizontalAlignment="left" Margin="2,0" IsEnabled="False"/>
+
+            </DockPanel>
+        </Grid>
+        <DataGrid SelectionChanged="DataGrid_SelectionChanged" Grid.Column="0" ColumnWidth="*" Margin="5" AlternatingRowBackground="#e0dbff" RowBackground="#ebe8ff" BorderBrush="#a294ff" BorderThickness="3" Background="#cac2ff" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Name="dataGrid" CanUserReorderColumns="False" AutoGenerateColumns="True" CanUserDeleteRows="False" SelectionUnit="FullRow" CanUserSortColumns="True" CanUserAddRows="False" Cursor="Cross"/>
+        
+        <Button  Style="{DynamicResource ButtonStyle}" Grid.Row="2" Width="230" Padding="5" HorizontalAlignment="Right"  Margin="2" Content="Подробные результаты" Click="ButtonGetResults_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Label VerticalAlignment="Center" Content="Оценка прозрачности: "/>
+            <Label VerticalAlignment="Center" FontSize="20" FontWeight="Bold" x:Name="ResultLabel" Margin="10 0 0 0"/>
+        </StackPanel>
     </Grid>
+    
 </Window>

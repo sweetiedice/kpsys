@@ -218,13 +218,20 @@ namespace kpsys
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+
+            
+
             if (dataGrid.SelectedItem != null)
             {
                 try
                 {
-                    DataRowView row = (DataRowView)dataGrid.SelectedItem;
-                    int id = (int)row["ID"];
-                    DeleteRecord(id);
+                    if (MessageBox.Show("Удалить выбранную запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes) 
+                    {
+                        DataRowView row = (DataRowView)dataGrid.SelectedItem;
+                        int id = (int)row["ID"];
+                        DeleteRecord(id);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {

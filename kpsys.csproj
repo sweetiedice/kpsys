@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AddDataWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="add.png" />
     <None Remove="Resourses\Icons\add.png" />
     <None Remove="Resourses\Icons\delete.png" />
@@ -15,6 +19,10 @@
     <None Remove="Resourses\Icons\refresh.png" />
     <None Remove="Resourses\Image\eye.png" />
     <None Remove="Resourses\Image\hide.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="AddDataWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>

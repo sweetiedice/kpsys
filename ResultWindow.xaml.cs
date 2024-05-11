@@ -57,7 +57,6 @@ namespace kpsys
         double sumSqY1 = 0;
         double sumSqY2 = 0;
         double sumSqY3 = 0;
-        double sumSqY4 = 0;
 
         double sumSqdiffXavg_X = 0;
 
@@ -109,7 +108,8 @@ namespace kpsys
             // Создаем диалоговое окно сохранения файла
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "PDF files (*.pdf)|*.pdf"
+                Filter = "PDF files (*.pdf)|*.pdf",
+                FileName = "Результаты"
             };
 
             // Открываем диалоговое окно и проверяем, был ли выбран файл для сохранения
@@ -159,7 +159,7 @@ namespace kpsys
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при экспорте в PDF: " + ex.Message);
+                    MessageBox.Show("Ошибка при экспорте в PDF: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -167,7 +167,7 @@ namespace kpsys
                     document.Close();
                 }
 
-                MessageBox.Show("Экспорт в PDF успешно выполнен!");
+                MessageBox.Show("Экспорт в PDF успешно выполнен!", "Экспорт", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -270,7 +270,6 @@ namespace kpsys
                                 sumSqY1 += Math.Pow(y1Value, 2);
                                 sumSqY2 += Math.Pow(y2Value, 2);
                                 sumSqY3 += Math.Pow(y3Value, 2);
-                                sumSqY4 += Math.Pow(y4Value, 2);
 
                                 sumX += xValue;
                                 sumY1 += y1Value;

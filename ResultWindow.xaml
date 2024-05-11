@@ -10,7 +10,7 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"        
         Icon="Resourses/Icons/icon.ico"
-        Title="Результаты" Height="770" Width="1550" MinHeight="800" MinWidth="1550" WindowStartupLocation="CenterScreen">
+        Title="Результаты" ResizeMode="CanMinimize" Height="770" Width="1550" MinHeight="800" MinWidth="1550" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition/>
