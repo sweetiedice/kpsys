@@ -20,8 +20,8 @@
         <!--  красная плашка  -->
         <Border
 
-            Margin="50"
-            Padding="50"
+            Margin="25"
+            Padding="75"
             VerticalAlignment="Stretch"
             Background="#d5cfff"
             CornerRadius="20">

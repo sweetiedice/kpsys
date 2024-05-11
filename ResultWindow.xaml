@@ -116,8 +116,8 @@
                 <TextBlock Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="0,627"/>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="Avg X"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="Dx" />
-                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Center" Text="Vx" Height="40"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="Dx"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="Vx"/>
                 <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="Gx"/>
 
 

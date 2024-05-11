@@ -15,6 +15,7 @@ using OxyPlot.Wpf;
 using System.Collections.Generic;
 using System.Data;
 using System.Xml;
+using System.Diagnostics;
 
 namespace kpsys
 {
@@ -167,8 +168,11 @@ namespace kpsys
                     document.Close();
                 }
 
+                
                 MessageBox.Show("Экспорт в PDF успешно выполнен!", "Экспорт", MessageBoxButton.OK, MessageBoxImage.Information);
+                Process.Start(filePath);
             }
+
         }
 
         // Метод для поиска всех дочерних элементов указанного типа в указанном элементе
