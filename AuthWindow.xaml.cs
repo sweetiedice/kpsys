@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace kpsys
 {
@@ -21,16 +22,15 @@ namespace kpsys
     /// </summary>
     public partial class AuthWindow : Window
     {
-        readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\tonik\\source\\repos\\kpsys\\kpsys_database.mdf;Integrated Security=True;";
+        private string connectionString = DatabaseHelper.GetConnectionString();
         public AuthWindow()
         {
             InitializeComponent();
         }
 
-
-
         private bool AuthenticateUser(string username, string password)
         {
+            
             string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

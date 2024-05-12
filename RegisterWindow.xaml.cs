@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace kpsys
 {
@@ -20,12 +21,12 @@ namespace kpsys
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\tonik\\source\\repos\\kpsys\\kpsys_database.mdf;Integrated Security=True;";
+        private string connectionString = DatabaseHelper.GetConnectionString();
         public RegisterWindow()
         {
             InitializeComponent();
         }
-
+       
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             AuthWindow authWindow = new AuthWindow();

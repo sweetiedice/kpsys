@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <None Remove="add.png" />
+    <None Remove="Resourses\Data\kpsys_database.mdf" />
+    <None Remove="Resourses\Data\kpsys_database_log.ldf" />
     <None Remove="Resourses\Icons\add.png" />
     <None Remove="Resourses\Icons\delete.png" />
     <None Remove="Resourses\Icons\icon.ico" />
@@ -26,6 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resourses\Data\kpsys_database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\Data\kpsys_database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
@@ -33,22 +44,22 @@
 
   <ItemGroup>
     <Resource Include="Resourses\Icons\add.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resourses\Icons\delete.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resourses\Icons\icon.ico" />
+    <Resource Include="Resourses\Icons\icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resourses\Icons\refresh.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resourses\Image\eye.png" />
-    <Resource Include="Resourses\Image\hide.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="kpsys_database.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
+    <Resource Include="Resourses\Image\eye.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resourses\Image\hide.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 </Project>

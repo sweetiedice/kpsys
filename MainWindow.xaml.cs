@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,29 +15,20 @@ namespace kpsys
     /// </summary>
     public partial class MainWindow : Window
     {
+        string connectionString = DatabaseHelper.GetConnectionString();
         public MainWindow()
         {
             InitializeComponent();
             LoadData();
             FillComboBoxes();
         }
+
         double sumX = 0;
         double sumY1 = 0;
-
-
         double sumMultX_Y1 = 0;
-
-
         double sumSqX = 0;
-
-
-
-
-
         int count = 0;
-
         double sumPX_Y1 = 0;
-        readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\tonik\\source\\repos\\kpsys\\kpsys_database.mdf;Integrated Security=True;";
         private DataTable dataTable;
         private void LoadData()
         {

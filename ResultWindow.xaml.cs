@@ -24,13 +24,12 @@ namespace kpsys
     /// </summary>
     public partial class ResultWindow : Window
     {
+        private string connectionString = DatabaseHelper.GetConnectionString();
         public ResultWindow()
         {
             InitializeComponent();
             CalculationData();
         }
-
-        readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\tonik\\source\\repos\\kpsys\\kpsys_database.mdf;Integrated Security=True;";
 
         // Запрос для извлечения данных из базы данных
         readonly string query = "SELECT * FROM [Values]";
