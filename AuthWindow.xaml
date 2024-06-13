@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:kpsys"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+        Icon="Resourses/Icons/icon.ico"
         WindowStartupLocation="CenterScreen"
-        Title="Авторизация" Height="520" Width="600">
-
+        Title="Авторизация" Height="600" Width="600">
 
     <Grid >
         <Grid.Background>
@@ -32,15 +32,23 @@
             </Border.Effect>
 
             <!--  панель  -->
-            <StackPanel >
 
-                <TextBlock Margin="0,0,0,20"
+            <StackPanel>
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="225" />
+                        <ColumnDefinition Width="*" />
+
+
+                    </Grid.ColumnDefinitions>
+                    <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"
                     FontFamily="Microsoft YaHei"
                     FontSize="32"
                     FontWeight="Bold"
                     Foreground="#000"
                     Text="Авторизация" />
-
+                    <Image Source="Resourses/image/logo.png" Height="120" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right" />
+                </Grid>
                 <Grid Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="96" />

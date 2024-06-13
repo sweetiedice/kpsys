@@ -21,6 +21,7 @@
     <None Remove="Resourses\Icons\refresh.png" />
     <None Remove="Resourses\Image\eye.png" />
     <None Remove="Resourses\Image\hide.png" />
+    <None Remove="Resourses\Image\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,5 +62,6 @@
     <Resource Include="Resourses\Image\hide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resourses\Image\logo.png" />
   </ItemGroup>
 </Project>

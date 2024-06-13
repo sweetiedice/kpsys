@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:kpsys"
         mc:Ignorable="d" 
         ResizeMode="NoResize"
+        Icon="Resourses/Icons/icon.ico"
         WindowStartupLocation="CenterScreen"
         Title="Регистрация" Height="520" Width="600">
 
